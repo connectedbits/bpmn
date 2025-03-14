@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module DMN
-  VERSION = "0.0.3"
+module BPMN
+  VERSION = "0.0.4"
 end
