@@ -1,12 +1,12 @@
-require_relative "lib/dmn/version"
+require_relative "lib/feel/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "dmn"
-  spec.version = DMN::VERSION
+  spec.name = "feel"
+  spec.version = FEEL::VERSION
   spec.authors = ["Connected Bits"]
   spec.email = ["info@connectedbits.com"]
 
-  spec.summary = "A light-weight DMN FEEL expression evaluator and business rule engine in Ruby."
+  spec.summary = "A light-weight FEEL expression evaluator in Ruby."
   spec.description = "..."
   spec.homepage    = "https://www.connectedbits.com"
   spec.license = "MIT"
@@ -19,13 +19,10 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 3.1"
 
-  spec.add_dependency "feel", ">= 0.0.4"
-
   spec.add_dependency "activemodel", ">= 7.0.2.3"
   spec.add_dependency "activesupport", ">= 7.0.2.3"
   spec.add_dependency "ostruct"
   spec.add_dependency "treetop", "=1.6.12" # locked as treetop made some class changes that cause: superclass mismatch for class Parser (TypeError)
-  spec.add_dependency "xmlhasher", "~> 1.0.7"
 
   spec.add_development_dependency "rake"
   spec.add_development_dependency "guard"

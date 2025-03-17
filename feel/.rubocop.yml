@@ -1,0 +1,155 @@
+require:
+  - rubocop-performance
+
+inherit_mode:
+  merge:
+    - Include
+    - Exclude
+
+### Everything
+
+AllCops:
+  NewCops: disable
+  DisabledByDefault: true
+  Exclude:
+    - bin/*
+
+### Style Department
+
+# Style:
+#   Enabled: true
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/RedundantCapitalW:
+  Enabled: false
+
+Style/BlockComments:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  Exclude:
+    - Rakefile
+    - Gemfile
+    - "**/*.gemspec"
+    - bin/*
+
+Style/RegexpLiteral:
+  Enabled: false
+
+### Layout Department
+
+Layout/TrailingEmptyLines:
+  Enabled: true
+
+Layout/TrailingWhitespace:
+  Enabled: true
+
+Layout/BlockAlignment:
+  Enabled: true
+
+Layout/CaseIndentation:
+  Enabled: true
+  EnforcedStyle: end
+
+Layout/ClosingParenthesisIndentation:
+  Enabled: true
+
+Layout/CommentIndentation:
+  Enabled: true
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+
+Layout/SpaceInsideBlockBraces:
+  Enabled: true
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: true
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented
+
+Layout/ArrayAlignment:
+  Enabled: true
+
+Layout/HashAlignment:
+  Enabled: false
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Layout/ParameterAlignment:
+  Enabled: true
+  EnforcedStyle: with_fixed_indentation
+
+Layout/MultilineAssignmentLayout:
+  EnforcedStyle: same_line
+
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Layout/ElseAlignment:
+  Enabled: true
+
+Layout/EndAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: start_of_line
+
+Layout/FirstArgumentIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Layout/FirstArrayElementIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Layout/HeredocIndentation:
+  Enabled: true
+
+Layout/IndentationConsistency:
+  Enabled: true
+
+Layout/IndentationWidth:
+  Enabled: true
+
+Layout/FirstHashElementIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Layout/RescueEnsureAlignment:
+  Enabled: false
+
+### Performance Department
+
+Performance:
+  Enabled: true
+
+Performance/RedundantMerge:
+  MaxKeyValuePairs: 1
+
+### Security Department
+
+Security:
+  Enabled: true
+
+### Bundler Department
+
+Bundler:
+  Enabled: true
+
+### Lint Department
+
+Lint:
+  Enabled: true

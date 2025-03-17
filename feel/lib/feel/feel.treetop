@@ -1,4 +1,4 @@
-grammar DMN
+grammar FEEL
 
   rule start
     expression_or_tests

@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-module DMN
+module FEEL
   describe UnaryTests do
     it "should always pass with '-'" do
       _(UnaryTests.new(text: "-").test(3)).must_equal true

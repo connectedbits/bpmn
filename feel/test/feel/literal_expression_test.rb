@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-module DMN
+module FEEL
   describe LiteralExpression do
     it "should support bracketed expressions" do
       tree = LiteralExpression.new(text: "(3 + 4) + 2")
@@ -121,10 +121,10 @@ module DMN
         end
 
         it "should eval date properties" do
-          # _(DMN.eval('date("1963-12-23").year')).must_equal 1963
-          # _(DMN.eval('date("1963-12-23").month')).must_equal 12
-          # _(DMN.eval('date("1963-12-23").day')).must_equal 23
-          # _(DMN.eval('date("1963-12-23").weekday')).must_equal 1
+          # _(FEEL.eval('date("1963-12-23").year')).must_equal 1963
+          # _(FEEL.eval('date("1963-12-23").month')).must_equal 12
+          # _(FEEL.eval('date("1963-12-23").day')).must_equal 23
+          # _(FEEL.eval('date("1963-12-23").weekday')).must_equal 1
         end
 
         it "should handle null values" do
@@ -260,7 +260,7 @@ module DMN
 
         describe :strict do
           before do
-            DMN.configure do |config|
+            FEEL.configure do |config|
               config.strict = true
             end
           end
@@ -294,7 +294,7 @@ module DMN
           end
 
           after do
-            DMN.configure do |config|
+            FEEL.configure do |config|
               config.strict = false
             end
           end
@@ -304,17 +304,17 @@ module DMN
 
     describe :function_invocation do
       it "should invoke a function" do
-        DMN.config.functions = { "rev" => proc { |str| str.reverse } }
+        FEEL.config.functions = { "rev" => proc { |str| str.reverse } }
         _(LiteralExpression.new(text: 'rev("Hello World")').evaluate).must_equal "dlroW olleH"
       end
 
       it "should parse single parameter" do
-        DMN.config.functions = { "rev" => proc { |str| str.reverse } }
+        FEEL.config.functions = { "rev" => proc { |str| str.reverse } }
         _(LiteralExpression.new(text: 'rev("Hello World")').evaluate).must_equal "dlroW olleH"
       end
 
       it "should reference variables in the context" do
-        DMN.config.functions = { "greet" => proc { |name| "Hi #{name}" } }
+        FEEL.config.functions = { "greet" => proc { |name| "Hi #{name}" } }
         _(LiteralExpression.new(text: "greet(name)").evaluate(name: "Eric")).must_equal "Hi Eric"
       end
 
@@ -325,27 +325,27 @@ module DMN
 
       describe :missing_functions do
         it "should invoke a function" do
-          DMN.config.functions = { "test" => proc { "Hi" } }
+          FEEL.config.functions = { "test" => proc { "Hi" } }
           _(LiteralExpression.new(text: "testy()").evaluate).must_be_nil
         end
 
         describe :strict do
           before do
-            DMN.configure do |config|
+            FEEL.configure do |config|
               config.strict = true
             end
           end
 
           it "should return provide helpful did you mean hint" do
             error = assert_raises(EvaluationError) do
-              DMN.config.functions = { "test" => proc { "Hi" } }
+              FEEL.config.functions = { "test" => proc { "Hi" } }
               LiteralExpression.new(text: "testy()").evaluate
             end
             _(error.message).must_equal "Identifier testy not found. Did you mean test?"
           end
 
           after do
-            DMN.configure do |config|
+            FEEL.configure do |config|
               config.strict = false
             end
           end

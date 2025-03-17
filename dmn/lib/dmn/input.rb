@@ -5,7 +5,8 @@ module DMN
     attr_reader :id, :label, :input_expression
 
     def self.from_json(json)
-      input_expression = LiteralExpression.from_json(json[:input_expression]) if json[:input_expression]
+      input_expression = FEEL::
+      LiteralExpression.from_json(json[:input_expression]) if json[:input_expression]
       Input.new(id: json[:id], label: json[:label], input_expression:)
     end
 

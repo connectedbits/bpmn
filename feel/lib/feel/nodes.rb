@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DMN
+module FEEL
   class Node < Treetop::Runtime::SyntaxNode
     #
     # Takes a context hash and returns an array of qualified names
@@ -225,11 +225,11 @@ module DMN
   class QualifiedName < Node
     def eval(context = {})
       if tail.empty?
-        raise_evaluation_error(head.text_value, context) if DMN.config.strict && !context.key?(head.text_value.to_sym)
+        raise_evaluation_error(head.text_value, context) if FEEL.config.strict && !context.key?(head.text_value.to_sym)
         context[head.text_value.to_sym]
       else
         tail.elements.flat_map { |element| element.name.text_value.split(".") }.inject(context[head.text_value.to_sym]) do |hash, key|
-          raise_evaluation_error("#{head.text_value}#{tail.text_value}", context) if DMN.config.strict && (hash.blank? || !hash.key?(key.to_sym))
+          raise_evaluation_error("#{head.text_value}#{tail.text_value}", context) if FEEL.config.strict && (hash.blank? || !hash.key?(key.to_sym))
           return nil unless hash
           hash[key.to_sym]
         end
@@ -385,7 +385,7 @@ module DMN
       fn = context[fn_name.text_value.to_sym]
 
       unless fn
-        raise_evaluation_error(fn_name.text_value, context) if DMN.config.strict
+        raise_evaluation_error(fn_name.text_value, context) if FEEL.config.strict
         return nil
       end
 

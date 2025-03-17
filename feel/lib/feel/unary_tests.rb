@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DMN
+module FEEL
   class UnaryTests < LiteralExpression
     attr_reader :id, :text
 

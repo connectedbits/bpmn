@@ -1,6 +1,6 @@
 # BPMN
 
-A workflow engine for Ruby applications based on the [BPMN](https://www.bpmn.org) standard. It executes business processes defined in a [modeler](https://camunda.com/download/modeler/). It uses [DMN](https://github.com/connectedbits/bpmn/tree/main/dmn) to evaluate expressions and business rules in the BPMN model.
+A workflow engine for Ruby applications based on the [BPMN](https://www.bpmn.org) standard. It executes business processes defined in a [modeler](https://camunda.com/download/modeler/). It uses [DMN](https://github.com/connectedbits/bpmn/tree/main/dmn) to evaluate business rules and [FEEL](https://github.com/connectedbits/bpmn/tree/main/feel) to evaluate expressions in the BPMN model.
 
 ## Usage
 

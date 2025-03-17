@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DMN
+module FEEL
   class LiteralExpression
     attr_reader :id, :text
 
@@ -14,7 +14,7 @@ module DMN
     end
 
     def tree
-      @tree ||= DMN::Parser.parse(text)
+      @tree ||= FEEL::Parser.parse(text)
     end
 
     def valid?
@@ -28,7 +28,7 @@ module DMN
 
     def functions
       builtins = LiteralExpression.builtin_functions
-      custom = (DMN.config.functions || {})
+      custom = (FEEL.config.functions || {})
       ActiveSupport::HashWithIndifferentAccess.new(builtins.merge(custom))
     end
 
@@ -39,7 +39,7 @@ module DMN
       # Define a lambda for the recursive function
       walk_tree = lambda do |node|
         # If the node is a qualified name, add it to the set
-        if node.is_a?(DMN::FunctionInvocation)
+        if node.is_a?(FEEL::FunctionInvocation)
           function_names << node.fn_name.text_value
         end
 
@@ -63,7 +63,7 @@ module DMN
       # Define a lambda for the recursive function
       walk_tree = lambda do |node|
         # If the node is a qualified name, add it to the set
-        if node.is_a?(DMN::QualifiedName)
+        if node.is_a?(FEEL::QualifiedName)
           qualified_names << node.text_value
         end
 

@@ -7,7 +7,7 @@ module DMN
     def self.from_json(json)
       information_requirements = Array.wrap(json[:information_requirement]).map { |ir| InformationRequirement.from_json(ir) } if json[:information_requirement]
       decision_table = DecisionTable.from_json(json[:decision_table]) if json[:decision_table]
-      literal_expression = LiteralExpression.from_json(json[:literal_expression]) if json[:literal_expression]
+      literal_expression = FEEL::LiteralExpression.from_json(json[:literal_expression]) if json[:literal_expression]
       variable = Variable.from_json(json[:variable]) if json[:variable]
       Decision.new(id: json[:id], name: json[:name], decision_table:, variable:, literal_expression:, information_requirements:)
     end

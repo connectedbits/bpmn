@@ -6,16 +6,13 @@ require "active_support"
 require "active_support/time"
 require "active_support/core_ext/hash"
 
-require "treetop"
+require "feel"
+
 require "xmlhasher"
 
 require "dmn/configuration"
-require "dmn/nodes"
-require "dmn/parser"
 
 require "dmn/variable"
-require "dmn/literal_expression"
-require "dmn/unary_tests"
 require "dmn/input"
 require "dmn/output"
 require "dmn/rule"
@@ -30,13 +27,13 @@ module DMN
   class EvaluationError < StandardError; end
 
   def self.evaluate(expression_text, variables: {})
-    literal_expression = DMN::LiteralExpression.new(text: expression_text)
+    literal_expression = FEEL::LiteralExpression.new(text: expression_text)
     raise SyntaxError, "Expression is not valid" unless literal_expression.valid?
     literal_expression.evaluate(variables)
   end
 
   def self.test(input, unary_tests_text, variables: {})
-    unary_tests = DMN::UnaryTests.new(text: unary_tests_text)
+    unary_tests = FEEL::UnaryTests.new(text: unary_tests_text)
     raise SyntaxError, "Unary tests are not valid" unless unary_tests.valid?
     unary_tests.test(input, variables)
   end

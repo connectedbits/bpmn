@@ -16,8 +16,8 @@ module DMN
 
         let(:output_entries) {
           [
-            LiteralExpression.new(text: '"Bonjour"'),
-            LiteralExpression.new(text: "name"),
+            FEEL::LiteralExpression.new(text: '"Bonjour"'),
+            FEEL::LiteralExpression.new(text: "name"),
           ]
         }
 
@@ -25,8 +25,8 @@ module DMN
           Rule.new(
             id: "1",
             input_entries: [
-              UnaryTests.new(text: "fr"),
-              UnaryTests.new(text: "false"),
+              FEEL::UnaryTests.new(text: "fr"),
+              FEEL::UnaryTests.new(text: "false"),
             ],
             output_entries: output_entries,
           )
@@ -44,8 +44,8 @@ module DMN
         describe :with_nil_output_entry do
           let(:output_entries) {
             [
-              LiteralExpression.new(text: nil),
-              LiteralExpression.new(text: "name"),
+              FEEL::LiteralExpression.new(text: nil),
+              FEEL::LiteralExpression.new(text: "name"),
             ]
           }
 
@@ -58,8 +58,8 @@ module DMN
         describe :with_blank_output_entry do
           let(:output_entries) {
             [
-              LiteralExpression.new(text: ""),
-              LiteralExpression.new(text: "name"),
+              FEEL::LiteralExpression.new(text: ""),
+              FEEL::LiteralExpression.new(text: "name"),
             ]
           }
 
@@ -72,8 +72,8 @@ module DMN
         describe :with_empty_literal_output_entry do
           let(:output_entries) {
             [
-              LiteralExpression.new(text: '""'),
-              LiteralExpression.new(text: "name"),
+              FEEL::LiteralExpression.new(text: '""'),
+              FEEL::LiteralExpression.new(text: "name"),
             ]
           }
 
@@ -86,8 +86,8 @@ module DMN
         describe :with_null_literal_output_entry do
           let(:output_entries) {
             [
-              LiteralExpression.new(text: "null"),
-              LiteralExpression.new(text: "name"),
+              FEEL::LiteralExpression.new(text: "null"),
+              FEEL::LiteralExpression.new(text: "name"),
             ]
           }
 
